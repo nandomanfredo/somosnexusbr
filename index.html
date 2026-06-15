@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SomosNexusBR — Transformação Tecnológica com Inteligência Artificial</title>
+  <meta name="description" content="Transformamos empresas em organizações orientadas por IA. Do diagnóstico ao resultado mensurável em 90 dias." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="SomosNexusBR — IA que transforma negócios" />
+  <meta property="og:description" content="Consultoria premium em IA aplicada a negócios. Resultado mensurável em 90 dias." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts — carregamento não bloqueante -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" /></noscript>
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg-base:      #080c14;
+      --bg-surface:   #0d1220;
+      --bg-card:      #111827;
+      --bg-glass:     rgba(255,255,255,0.04);
+      --border:       rgba(255,255,255,0.08);
+      --border-hover: rgba(99,179,237,0.35);
+      --text-primary: #f0f4ff;
+      --text-secondary: #8b9ab5;
+      --text-muted:   #4a5568;
+      --accent:       #3b82f6;
+      --accent-glow:  rgba(59,130,246,0.25);
+      --accent-2:     #06b6d4;
+      --accent-3:     #8b5cf6;
+      --success:      #10b981;
+      --radius-sm:    8px;
+      --radius-md:    14px;
+      --radius-lg:    20px;
+      --radius-xl:    28px;
+      --shadow-card:  0 4px 32px rgba(0,0,0,0.45);
+      --shadow-glow:  0 0 60px rgba(59,130,246,0.12);
+      --font-sans:    'Inter', system-ui, sans-serif;
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --transition:   all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ─── NOISE TEXTURE ──────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    section { position: relative; z-index: 1; }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+    .display-xl {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.018em;
+    }
+    .display-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+    .body-lg { font-size: 1.125rem; line-height: 1.75; }
+    .body-md { font-size: 1rem; line-height: 1.7; }
+    .label-sm { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #06b6d4 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px var(--accent-glow);
+    }
+    .btn-ghost {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.07);
+    }
+    .btn-lg { padding: 18px 36px; font-size: 1.05rem; border-radius: 12px; }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      transition: var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: var(--transition); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 999px;
+      background: rgba(59,130,246,0.08);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #93c5fd;
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline { margin-bottom: 24px; }
+    .hero-sub {
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 56px; }
+    .hero-proof {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .proof-item strong {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .proof-item span { font-size: 0.8rem; color: var(--text-muted); }
+    .proof-divider { width: 1px; height: 36px; background: var(--border); }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-card-stack { position: relative; width: 100%; max-width: 440px; }
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+    }
+    .hero-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); }
+    .hero-card-main { position: relative; z-index: 2; }
+    .hero-card-bg-1 {
+      position: absolute;
+      top: -12px; left: 12px; right: -12px; bottom: 12px;
+      background: rgba(59,130,246,0.05);
+      border: 1px solid rgba(59,130,246,0.1);
+      border-radius: var(--radius-lg);
+      z-index: 1;
+    }
+    .hero-card-bg-2 {
+      position: absolute;
+      top: -22px; left: 22px; right: -22px; bottom: 22px;
+      background: rgba(139,92,246,0.03);
+      border: 1px solid rgba(139,92,246,0.08);
+      border-radius: var(--radius-lg);
+      z-index: 0;
+    }
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .kpi-item {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .kpi-label { font-size: 0.75rem; color: var(--text-muted); }
+    .kpi-trend { color: var(--success); font-size: 0.75rem; font-weight: 600; }
+    .card-badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .tag-blue { background: rgba(59,130,246,0.1); color: #93c5fd; border: 1px solid rgba(59,130,246,0.2); }
+    .tag-cyan { background: rgba(6,182,212,0.1); color: #67e8f9; border: 1px solid rgba(6,182,212,0.2); }
+    .tag-purple { background: rgba(139,92,246,0.1); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.2); }
+    .tag-green { background: rgba(16,185,129,0.1); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.2); }
+
+    /* ─── BACKGROUND GLOW ────────────────────────────────────── */
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .glow-blue { background: radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%); }
+    .glow-purple { background: radial-gradient(circle, rgba(139,92,246,0.15), transparent 70%); }
+    .glow-cyan { background: radial-gradient(circle, rgba(6,182,212,0.12), transparent 70%); }
+
+    /* ─── SECTION SHARED ─────────────────────────────────────── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .section-header { text-align: center; max-width: 720px; margin: 0 auto 64px; }
+    .section-sub { color: var(--text-secondary); margin-top: 16px; }
+
+    /* ─── PROBLEMA ───────────────────────────────────────────── */
+    #problema { padding: 120px 0; }
+    .problema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .problema-list { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+    .problema-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-glass);
+      transition: var(--transition);
+    }
+    .problema-item:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.05); }
+    .problema-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .problema-icon.red { background: rgba(239,68,68,0.12); }
+    .problema-icon.amber { background: rgba(245,158,11,0.12); }
+    .problema-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .problema-text p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+    .problema-callout {
+      background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08));
+      border: 1px solid rgba(99,179,237,0.2);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+    .callout-stat {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .callout-stat span { color: var(--text-secondary); font-size: 1.5rem; font-weight: 400; }
+
+    /* ─── SOLUÇÃO ────────────────────────────────────────────── */
+    #solucao { padding: 120px 0; background: var(--bg-surface); }
+    .metodo-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 48px;
+      position: relative;
+    }
+    .metodo-flow::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-3));
+      opacity: 0.4;
+    }
+    .metodo-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+    }
+    .metodo-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      transition: var(--transition);
+    }
+    .metodo-step:hover .metodo-num {
+      border-color: var(--accent);
+      background: rgba(59,130,246,0.1);
+      color: #93c5fd;
+    }
+    .metodo-step:nth-child(1) .metodo-num { color: #60a5fa; }
+    .metodo-step:nth-child(2) .metodo-num { color: #34d399; }
+    .metodo-step:nth-child(3) .metodo-num { color: #a78bfa; }
+    .metodo-step:nth-child(4) .metodo-num { color: #f9a8d4; }
+    .metodo-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .metodo-desc { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ─── PRODUTOS ───────────────────────────────────────────── */
+    #produtos { padding: 120px 0; }
+    .produtos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .produto-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .produto-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      transition: var(--transition);
+    }
+    .produto-card.c1::before { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .produto-card.c2::before { background: linear-gradient(90deg, var(--accent-2), var(--success)); }
+    .produto-card.c3::before { background: linear-gradient(90deg, var(--accent-3), var(--accent)); }
+    .produto-card.c4::before { background: linear-gradient(90deg, #f59e0b, #f97316); }
+    .produto-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+    .produto-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+    .produto-card.c1 .produto-icon-wrap { background: rgba(59,130,246,0.12); }
+    .produto-card.c2 .produto-icon-wrap { background: rgba(6,182,212,0.12); }
+    .produto-card.c3 .produto-icon-wrap { background: rgba(139,92,246,0.12); }
+    .produto-card.c4 .produto-icon-wrap { background: rgba(245,158,11,0.12); }
+    .produto-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .produto-tagline { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px; font-style: italic; }
+    .produto-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .produto-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .produto-feature::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 600; }
+    .produto-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .produto-prazo { font-size: 0.8rem; color: var(--text-muted); }
+    .produto-price { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--text-primary); }
+    .produto-featured {
+      position: absolute;
+      top: 16px; right: 16px;
+      padding: 4px 10px;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #93c5fd;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── DIFERENCIAIS ───────────────────────────────────────── */
+    #diferenciais { padding: 120px 0; background: var(--bg-surface); }
+    .diferenciais-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .diferencial-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-glass);
+      backdrop-filter: blur(8px);
+      transition: var(--transition);
+    }
+    .diferencial-card:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.05); }
+    .diferencial-icon { font-size: 1.5rem; margin-bottom: 16px; }
+    .diferencial-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .diferencial-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ─── METODOLOGIA ────────────────────────────────────────── */
+    #metodologia { padding: 120px 0; }
+    .method-name {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    .method-phases { display: flex; flex-direction: column; gap: 20px; margin-top: 48px; }
+    .phase-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .phase-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .phase-item:hover { border-color: var(--border-hover); }
+    .phase-item:hover::before { opacity: 1; background: linear-gradient(135deg, rgba(59,130,246,0.03), transparent); }
+    .phase-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      opacity: 0.15;
+    }
+    .phase-content h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+    .phase-content p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+    .phase-deliverable {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 4px 12px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── SOCIOS ─────────────────────────────────────────────── */
+    #socios { padding: 120px 0; background: var(--bg-surface); }
+    .socios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .socio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .socio-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+    .socio-avatar {
+      width: 72px; height: 72px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .socio-card:nth-child(1) .socio-avatar { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+    .socio-card:nth-child(2) .socio-avatar { background: linear-gradient(135deg, var(--accent-3), #ec4899); color: #fff; }
+    .socio-role { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .socio-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+    .socio-bio { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+    .socio-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .socio-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .socio-stat-val { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+    .socio-stat-label { font-size: 0.72rem; color: var(--text-muted); line-height: 1.3; }
+
+    /* ─── BENEFÍCIOS ─────────────────────────────────────────── */
+    #beneficios { padding: 120px 0; }
+    .beneficios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .beneficio-item {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-glass);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .beneficio-item:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+    .beneficio-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .beneficio-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ─── FAQ ────────────────────────────────────────────────── */
+    #faq { padding: 120px 0; background: var(--bg-surface); }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .faq-item.open { border-color: rgba(59,130,246,0.25); }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .faq-question:hover { color: #93c5fd; }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border-radius: 6px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .faq-item.open .faq-icon { background: rgba(59,130,246,0.1); border-color: var(--accent); color: var(--accent); transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-answer-inner { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; }
+
+    /* ─── CTA FINAL ──────────────────────────────────────────── */
+    #cta-final { padding: 120px 0; }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1));
+      border: 1px solid rgba(99,179,237,0.2);
+      border-radius: var(--radius-xl);
+      padding: 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    .cta-content { position: relative; z-index: 1; }
+    .cta-headline { margin-bottom: 20px; }
+    .cta-sub { color: var(--text-secondary); max-width: 560px; margin: 0 auto 40px; }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+    .cta-trust { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 24px; }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); }
+    .trust-icon { width: 16px; height: 16px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #fff; flex-shrink: 0; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.82rem; color: var(--text-muted); transition: var(--transition); }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── MOBILE ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+      .hero-visual { display: none; }
+      .metodo-flow { grid-template-columns: 1fr 1fr; }
+      .metodo-flow::before { display: none; }
+      .diferenciais-grid { grid-template-columns: 1fr 1fr; }
+      .beneficios-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-cta .btn-ghost { display: none; }
+      .hero-proof { gap: 16px; }
+      .problema-grid { grid-template-columns: 1fr; }
+      .metodo-flow { grid-template-columns: 1fr 1fr; }
+      .produtos-grid { grid-template-columns: 1fr; }
+      .diferenciais-grid { grid-template-columns: 1fr; }
+      .socios-grid { grid-template-columns: 1fr; }
+      .beneficios-grid { grid-template-columns: 1fr 1fr; }
+      .cta-box { padding: 48px 24px; }
+      .phase-item { grid-template-columns: 1fr; }
+      .phase-num { font-size: 1.2rem; opacity: 0.3; margin-bottom: 8px; }
+    }
+    @media (max-width: 480px) {
+      .beneficios-grid { grid-template-columns: 1fr; }
+      .socio-stats { grid-template-columns: 1fr 1fr; }
+      .metodo-flow { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="SomosNexusBR">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 2L16 6V12L9 16L2 12V6L9 2Z" stroke="white" stroke-width="1.5" fill="none"/>
+              <path d="M9 6L12 8V12L9 14L6 12V8L9 6Z" fill="white" fill-opacity="0.5"/>
+            </svg>
+          </div>
+          SomosNexusBR
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="#solucao">Solução</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#metodologia">Metodologia</a></li>
+          <li><a href="#socios">Equipe</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="#cta-final" class="btn btn-ghost" style="padding:10px 20px;font-size:0.85rem;">Agendar Reunião</a>
+          <a href="#cta-final" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Solicitar Diagnóstico</a>
+        </div>
+        <div class="nav-hamburger" role="button" aria-label="Menu" tabindex="0" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section id="hero">
+    <!-- Orbs de fundo -->
+    <div class="glow-orb glow-blue" style="width:600px;height:600px;top:-100px;right:-100px;opacity:0.5;" aria-hidden="true"></div>
+    <div class="glow-orb glow-purple" style="width:400px;height:400px;bottom:0;left:-100px;opacity:0.4;" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge reveal">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Consultoria Premium em IA para Negócios
+          </div>
+          <h1 class="display-xl hero-headline reveal reveal-delay-1">
+            Sua empresa precisa de IA<br />
+            <span class="gradient-text">que gera resultado,</span><br />
+            não de experimento.
+          </h1>
+          <p class="body-lg hero-sub reveal reveal-delay-2">
+            Transformamos empresas em organizações orientadas por Inteligência Artificial.
+            Estratégia, implementação e escala. Resultado mensurável em 90 dias.
+          </p>
+          <div class="hero-actions reveal reveal-delay-3">
+            <a href="#cta-final" class="btn btn-primary btn-lg">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.5 7.5h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3a.5.5 0 011 0v3h3a.5.5 0 010 1z"/></svg>
+              Solicitar Diagnóstico Estratégico
+            </a>
+            <a href="#solucao" class="btn btn-ghost btn-lg">
+              Ver como funciona
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 3.5l4 4.5-4 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="hero-proof reveal reveal-delay-4">
+            <div class="proof-item">
+              <strong>20+</strong>
+              <span>Anos de experiência</span>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="proof-item">
+              <strong>90</strong>
+              <span>Dias para resultado</span>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="proof-item">
+              <strong>2x</strong>
+              <span>Especialistas seniores</span>
+            </div>
+            <div class="proof-divider" aria-hidden="true"></div>
+            <div class="proof-item">
+              <strong>1</strong>
+              <span>Livro publicado sobre IA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal reveal-delay-2">
+          <div class="hero-card-stack">
+            <div class="hero-card-bg-2" aria-hidden="true"></div>
+            <div class="hero-card-bg-1" aria-hidden="true"></div>
+            <div class="hero-card hero-card-main">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+                <span style="font-size:0.8rem;font-weight:600;color:var(--text-muted);">NEXUS AI DASHBOARD</span>
+                <span class="tag tag-green" style="font-size:0.7rem;">● Ao vivo</span>
+              </div>
+              <div class="kpi-grid">
+                <div class="kpi-item">
+                  <div class="kpi-value">87%</div>
+                  <div class="kpi-label">Redução retrabalho</div>
+                  <div class="kpi-trend">↑ +23pp</div>
+                </div>
+                <div class="kpi-item">
+                  <div class="kpi-value">3.2x</div>
+                  <div class="kpi-label">Produtividade</div>
+                  <div class="kpi-trend">↑ +120%</div>
+                </div>
+                <div class="kpi-item">
+                  <div class="kpi-value">R$4.1M</div>
+                  <div class="kpi-label">Custo evitado</div>
+                  <div class="kpi-trend">↑ Anual</div>
+                </div>
+                <div class="kpi-item">
+                  <div class="kpi-value">28d</div>
+                  <div class="kpi-label">Tempo de entrega</div>
+                  <div class="kpi-trend">↓ -68%</div>
+                </div>
+              </div>
+              <div class="card-badge-row">
+                <span class="tag tag-blue">Agentes IA</span>
+                <span class="tag tag-cyan">RAG</span>
+                <span class="tag tag-purple">Arquitetura</span>
+                <span class="tag tag-green">Produção</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROBLEMA ═══════════ -->
+  <section id="problema">
+    <div class="container">
+      <div class="problema-grid">
+        <div>
+          <p class="section-label label-sm reveal">O Diagnóstico</p>
+          <h2 class="display-lg reveal reveal-delay-1">
+            Enquanto você hesita,<br />
+            <span class="gradient-text">seus concorrentes agem.</span>
+          </h2>
+          <p class="body-md reveal reveal-delay-2" style="color:var(--text-secondary);margin-top:16px;max-width:460px;">
+            A janela de vantagem competitiva da IA é real. E ela se fecha.
+            Empresas que implementam IA com estratégia hoje criam barreiras que
+            serão difíceis de superar em 18 meses.
+          </p>
+          <div class="problema-list">
+            <div class="problema-item reveal">
+              <div class="problema-icon red" aria-hidden="true">⚠</div>
+              <div class="problema-text">
+                <h4>Sistemas legados travam o crescimento</h4>
+                <p>Tecnologia desatualizada limita decisões, aumenta custos e impede escala. Cada mês de atraso é concorrente avançando.</p>
+              </div>
+            </div>
+            <div class="problema-item reveal reveal-delay-1">
+              <div class="problema-icon amber" aria-hidden="true">⚙</div>
+              <div class="problema-text">
+                <h4>IA sem estratégia vira desperdício</h4>
+                <p>87% dos projetos de IA falham ou ficam em piloto eterno. O problema raramente é a tecnologia: é a falta de metodologia.</p>
+              </div>
+            </div>
+            <div class="problema-item reveal reveal-delay-2">
+              <div class="problema-icon red" aria-hidden="true">⏱</div>
+              <div class="problema-text">
+                <h4>Times sobrecarregados, decisões lentas</h4>
+                <p>Processos manuais consomem capacidade humana que deveria estar gerando valor estratégico para o negócio.</p>
+              </div>
+            </div>
+            <div class="problema-item reveal reveal-delay-3">
+              <div class="problema-icon amber" aria-hidden="true">📉</div>
+              <div class="problema-text">
+                <h4>Crescimento sem arquitetura não sustenta</h4>
+                <p>Escalar sobre uma base tecnológica frágil custa 3–5x mais do que construir certo desde o início.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="problema-callout">
+            <p class="label-sm" style="color:var(--accent);margin-bottom:20px;">Dado de mercado</p>
+            <div class="callout-stat gradient-text">87%<span style="margin-left:8px;">↓</span></div>
+            <p style="font-size:1.1rem;font-weight:600;margin-bottom:12px;">dos projetos de IA falham antes de gerar resultado.</p>
+            <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-bottom:32px;">
+              A causa principal não é a tecnologia: é a ausência de metodologia,
+              governança e gestão de mudança integradas desde o primeiro dia.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:48px;height:4px;background:var(--accent);border-radius:2px;flex-shrink:0;"></div>
+                <span style="font-size:0.85rem;color:var(--text-secondary);">Sem metodologia → piloto eterno</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:36px;height:4px;background:var(--accent-3);border-radius:2px;flex-shrink:0;"></div>
+                <span style="font-size:0.85rem;color:var(--text-secondary);">Sem governança → adoção zero</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:20px;height:4px;background:var(--accent-2);border-radius:2px;flex-shrink:0;"></div>
+                <span style="font-size:0.85rem;color:var(--text-secondary);">Com método → resultado em 90 dias</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SOLUÇÃO ═══════════ -->
+  <section id="solucao">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Nossa Abordagem</p>
+        <h2 class="display-lg">Simples. Focado. <span class="gradient-text">Orientado a resultado.</span></h2>
+        <p class="body-md section-sub">
+          Não vendemos horas de consultoria. Entregamos transformação tecnológica
+          com escopo, prazo e ROI definidos desde o primeiro dia.
+        </p>
+      </div>
+      <div class="metodo-flow">
+        <div class="metodo-step reveal">
+          <div class="metodo-num">01</div>
+          <div class="metodo-title">Assessment</div>
+          <div class="metodo-desc">Mapeamos oportunidades reais de IA priorizadas por impacto e viabilidade</div>
+        </div>
+        <div class="metodo-step reveal reveal-delay-1">
+          <div class="metodo-num">02</div>
+          <div class="metodo-title">Estratégia</div>
+          <div class="metodo-desc">Desenhamos o roadmap e arquitetura com ROI claro para cada iniciativa</div>
+        </div>
+        <div class="metodo-step reveal reveal-delay-2">
+          <div class="metodo-num">03</div>
+          <div class="metodo-title">Implementação</div>
+          <div class="metodo-desc">Construímos e entregamos sistemas em produção, não em PowerPoint</div>
+        </div>
+        <div class="metodo-step reveal reveal-delay-3">
+          <div class="metodo-num">04</div>
+          <div class="metodo-title">Escala</div>
+          <div class="metodo-desc">Expandimos para novas áreas e transferimos conhecimento para sua equipe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRODUTOS ═══════════ -->
+  <section id="produtos">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Portfólio</p>
+        <h2 class="display-lg">Produtos. Não <span class="gradient-text">horas de consultoria.</span></h2>
+        <p class="body-md section-sub">
+          Escopo fechado, prazo definido, resultado mensurável.
+          Cada produto é desenhado para uma fase da sua jornada.
+        </p>
+      </div>
+      <div class="produtos-grid">
+
+        <article class="produto-card c1 reveal">
+          <div class="produto-featured">Entrada</div>
+          <div class="produto-icon-wrap" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <h3 class="produto-name">Diagnóstico Estratégico de IA</h3>
+          <p class="produto-tagline">"Descubra onde a IA pode mudar seu negócio em 15 dias"</p>
+          <ul class="produto-features">
+            <li class="produto-feature">Mapeamento de processos e oportunidades de IA</li>
+            <li class="produto-feature">Priorização por ROI e viabilidade técnica</li>
+            <li class="produto-feature">Roadmap de 12 meses com quick wins</li>
+            <li class="produto-feature">Relatório executivo para board</li>
+          </ul>
+          <div class="produto-footer">
+            <span class="produto-prazo">15 dias corridos</span>
+            <span class="produto-price">R$ 8k – R$ 15k</span>
+          </div>
+        </article>
+
+        <article class="produto-card c2 reveal reveal-delay-1">
+          <div class="produto-icon-wrap" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="produto-name">Inteligência Operacional</h3>
+          <p class="produto-tagline">"Seu primeiro agente inteligente em produção em 30 dias"</p>
+          <ul class="produto-features">
+            <li class="produto-feature">1 processo escolhido implementado com IA</li>
+            <li class="produto-feature">Agente ou automação rodando em produção</li>
+            <li class="produto-feature">Integração com sistemas existentes</li>
+            <li class="produto-feature">Treinamento e documentação completa</li>
+          </ul>
+          <div class="produto-footer">
+            <span class="produto-prazo">30 dias</span>
+            <span class="produto-price">R$ 35k – R$ 80k</span>
+          </div>
+        </article>
+
+        <article class="produto-card c3 reveal reveal-delay-2">
+          <div class="produto-featured">Principal</div>
+          <div class="produto-icon-wrap" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="produto-name">Produto Inteligente</h3>
+          <p class="produto-tagline">"Transforme seu produto digital com IA em 90 dias"</p>
+          <ul class="produto-features">
+            <li class="produto-feature">Evolução completa do produto com IA embarcada</li>
+            <li class="produto-feature">Arquitetura moderna e escalável</li>
+            <li class="produto-feature">Múltiplas funcionalidades de IA integradas</li>
+            <li class="produto-feature">Governança, KPIs e CoE de IA interno</li>
+          </ul>
+          <div class="produto-footer">
+            <span class="produto-prazo">60–90 dias</span>
+            <span class="produto-price">R$ 80k – R$ 250k</span>
+          </div>
+        </article>
+
+        <article class="produto-card c4 reveal reveal-delay-3">
+          <div class="produto-icon-wrap" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3 class="produto-name">Parceiro Estratégico de IA</h3>
+          <p class="produto-tagline">"Seu time de IA como serviço, recorrente e estratégico"</p>
+          <ul class="produto-features">
+            <li class="produto-feature">Roadmap trimestral e revisões de arquitetura</li>
+            <li class="produto-feature">Novos casos de uso e expansão contínua</li>
+            <li class="produto-feature">Suporte técnico e estratégico mensal</li>
+            <li class="produto-feature">Transferência de conhecimento para sua equipe</li>
+          </ul>
+          <div class="produto-footer">
+            <span class="produto-prazo">Mínimo 12 meses</span>
+            <span class="produto-price">R$ 6k – R$ 20k/mês</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DIFERENCIAIS ═══════════ -->
+  <section id="diferenciais">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Por que nós</p>
+        <h2 class="display-lg">O que nos torna <span class="gradient-text">diferentes</span></h2>
+      </div>
+      <div class="diferenciais-grid">
+        <div class="diferencial-card reveal">
+          <div class="diferencial-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3L4 8v6c0 5.55 4.26 10.74 10 12 5.74-1.26 10-6.45 10-12V8L14 3z"/></svg>
+          </div>
+          <h3 class="diferencial-title">Alinhamento contínuo, valor real</h3>
+          <p class="diferencial-desc">Realizamos reuniões de alinhamento em cada etapa do projeto para garantir que a estratégia evolui junto com o negócio. Não entregamos tecnologia por entregar: entregamos o que realmente gera valor para a sua empresa.</p>
+        </div>
+        <div class="diferencial-card reveal reveal-delay-1">
+          <div class="diferencial-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="10"/><path d="M9 14l3.5 3.5L19 10"/></svg>
+          </div>
+          <h3 class="diferencial-title">Metodologia proprietária NEXUS</h3>
+          <p class="diferencial-desc">Não reinventamos a roda a cada projeto. Nosso método de 5 fases foi desenvolvido e testado para garantir adoção real, não apenas implementação técnica.</p>
+        </div>
+        <div class="diferencial-card reveal reveal-delay-2">
+          <div class="diferencial-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="11" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M17 7.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="diferencial-title">Engenharia + Gestão integradas</h3>
+          <p class="diferencial-desc">A maioria das consultorias entrega ou o lado técnico ou o estratégico. Nossa composição única une os dois desde o primeiro dia, eliminando o gap entre visão e execução.</p>
+        </div>
+        <div class="diferencial-card reveal reveal-delay-3">
+          <div class="diferencial-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="diferencial-title">IA em produção, não em slide</h3>
+          <p class="diferencial-desc">Entregamos sistemas rodando. Código em produção, métricas reais, equipe treinada. Nossa régua de sucesso é o impacto no negócio, não a qualidade do PowerPoint.</p>
+        </div>
+        <div class="diferencial-card reveal">
+          <div class="diferencial-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="22" height="22" rx="4"/><path d="M9 14l3 3 7-7"/></svg>
+          </div>
+          <h3 class="diferencial-title">Transferência real de conhecimento</h3>
+          <p class="diferencial-desc">Ao final de cada projeto, sua equipe sabe operar e evoluir a solução de forma independente. Não criamos dependência: criamos autonomia.</p>
+        </div>
+        <div class="diferencial-card reveal reveal-delay-1">
+          <div class="diferencial-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="diferencial-title">Biblioteca de agentes prontos</h3>
+          <p class="diferencial-desc">Aceleramos as entregas com soluções que já desenvolvemos e testamos em projetos reais: agentes prontos por setor, prompts refinados e playbooks validados. Você não paga pela nossa curva de aprendizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ METODOLOGIA ═══════════ -->
+  <section id="metodologia">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:flex-start;">
+        <div>
+          <p class="section-label label-sm reveal">Método Proprietário</p>
+          <div class="method-name reveal reveal-delay-1">NEXUS AI METHOD™</div>
+          <h2 class="display-lg reveal reveal-delay-2">O método que garante<br /><span class="gradient-text">adoção real de IA.</span></h2>
+          <p class="body-md reveal reveal-delay-3" style="color:var(--text-secondary);margin-top:16px;max-width:440px;">
+            Desenvolvido ao longo de mais de 35 anos combinados de experiência em
+            tecnologia e gestão, o NEXUS AI Method é a espinha dorsal de todos os
+            nossos projetos. Ele garante que a IA não apenas funcione, mas que
+            seja usada, gerencie KPIs e escale.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;" class="reveal reveal-delay-4">
+            <span class="tag tag-blue">Estratégia de negócio</span>
+            <span class="tag tag-cyan">Arquitetura técnica</span>
+            <span class="tag tag-purple">Gestão de mudança</span>
+            <span class="tag tag-green">Governança de IA</span>
+          </div>
+        </div>
+        <div class="method-phases">
+          <div class="phase-item reveal">
+            <div class="phase-num">01</div>
+            <div class="phase-content">
+              <h3>SCAN: Diagnóstico Profundo</h3>
+              <p>Mapeamos processos, avaliamos maturidade de dados e entrevistamos stakeholders. Identificamos onde a IA cria valor real, não onde ela parece interessante.</p>
+              <span class="phase-deliverable">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2"/><path d="M4 6l2 2 4-4"/></svg>
+                AI Opportunity Map
+              </span>
+            </div>
+          </div>
+          <div class="phase-item reveal reveal-delay-1">
+            <div class="phase-num">02</div>
+            <div class="phase-content">
+              <h3>DESIGN: Arquitetura e Roadmap</h3>
+              <p>Selecionamos tecnologias, desenhamos a solução e definimos KPIs de sucesso. O plano de gestão de mudança já entra aqui, não como adendo.</p>
+              <span class="phase-deliverable">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2"/><path d="M4 6l2 2 4-4"/></svg>
+                Blueprint Técnico + Plano de Implementação
+              </span>
+            </div>
+          </div>
+          <div class="phase-item reveal reveal-delay-2">
+            <div class="phase-num">03</div>
+            <div class="phase-content">
+              <h3>BUILD: Implementação em Sprints</h3>
+              <p>Desenvolvemos em ciclos de 2 semanas com demos reais para stakeholders. Integração com sistemas legados. Testes com usuários reais antes do go-live.</p>
+              <span class="phase-deliverable">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2"/><path d="M4 6l2 2 4-4"/></svg>
+                Sistema em produção
+              </span>
+            </div>
+          </div>
+          <div class="phase-item reveal reveal-delay-3">
+            <div class="phase-num">04</div>
+            <div class="phase-content">
+              <h3>ADOPT: Adoção e Resultado</h3>
+              <p>Treinamos usuários, documentamos e medimos adoção real. Taxa de uso &gt;80% é critério de sucesso. Gerenciamos resistências com metodologia de change management.</p>
+              <span class="phase-deliverable">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2"/><path d="M4 6l2 2 4-4"/></svg>
+                Taxa adoção &gt;80% + ROI documentado
+              </span>
+            </div>
+          </div>
+          <div class="phase-item reveal reveal-delay-4">
+            <div class="phase-num">05</div>
+            <div class="phase-content">
+              <h3>EVOLVE: Escala Contínua</h3>
+              <p>Roadmap trimestral de expansão, monitoramento de performance e novos casos de uso. Sua equipe fica autônoma. A IA evolui com o negócio.</p>
+              <span class="phase-deliverable">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2"/><path d="M4 6l2 2 4-4"/></svg>
+                Relatório trimestral + Novo roadmap
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SÓCIOS ═══════════ -->
+  <section id="socios">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">A Equipe</p>
+        <h2 class="display-lg">Dois especialistas seniores.<br /><span class="gradient-text">Uma parceria única.</span></h2>
+        <p class="body-md section-sub">
+          A combinação de engenharia de IA de ponta com execução estratégica e gestão de projetos
+          é o diferencial que nenhuma consultoria puramente técnica ou de gestão consegue replicar.
+        </p>
+      </div>
+      <div class="socios-grid">
+
+        <div class="socio-card reveal">
+          <div class="socio-avatar" aria-hidden="true">RS</div>
+          <p class="socio-role">Co-Fundador · Arquitetura & IA</p>
+          <h3 class="socio-name">Rafael Scheidt</h3>
+          <p class="socio-bio">
+            Engenheiro de Software com mais de 20 anos de experiência. Autor publicado sobre
+            Inteligência Artificial. Especialista em agentes inteligentes, RAG, MCP e arquitetura
+            de sistemas modernos. Transforma conceitos avançados de IA em sistemas que funcionam
+            em produção e escalam.
+          </p>
+          <div class="socio-tags">
+            <span class="tag tag-blue">Agentes Inteligentes</span>
+            <span class="tag tag-cyan">RAG</span>
+            <span class="tag tag-blue">MCP</span>
+            <span class="tag tag-purple">Arquitetura</span>
+            <span class="tag tag-green">Livro Publicado</span>
+          </div>
+          <div class="socio-stats">
+            <div>
+              <div class="socio-stat-val gradient-text">20+</div>
+              <div class="socio-stat-label">Anos de experiência</div>
+            </div>
+            <div>
+              <div class="socio-stat-val gradient-text">01</div>
+              <div class="socio-stat-label">Livro sobre IA</div>
+            </div>
+            <div>
+              <div class="socio-stat-val gradient-text">∞</div>
+              <div class="socio-stat-label">Sistemas entregues</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="socio-card reveal reveal-delay-2">
+          <div class="socio-avatar" aria-hidden="true">FO</div>
+          <p class="socio-role">Co-Fundador · Estratégia & Delivery</p>
+          <h3 class="socio-name">Fernando Oliveira</h3>
+          <p class="socio-bio">
+            PMP certificado pelo PMI com mais de 15 anos em tecnologia. Experiência como
+            Gerente de Projetos, Delivery Manager e Coordenador de Serviços. Especialista em
+            governança, transformação digital e execução estratégica. Faz a IA sair do piloto
+            e virar resultado de negócio mensurável.
+          </p>
+          <div class="socio-tags">
+            <span class="tag tag-purple">PMP · PMI</span>
+            <span class="tag tag-blue">Governança</span>
+            <span class="tag tag-cyan">Delivery</span>
+            <span class="tag tag-green">Transformação Digital</span>
+          </div>
+          <div class="socio-stats">
+            <div>
+              <div class="socio-stat-val gradient-text">15+</div>
+              <div class="socio-stat-label">Anos em tecnologia</div>
+            </div>
+            <div>
+              <div class="socio-stat-val gradient-text">PMP</div>
+              <div class="socio-stat-label">Certificação PMI</div>
+            </div>
+            <div>
+              <div class="socio-stat-val gradient-text">100%</div>
+              <div class="socio-stat-label">Foco em resultado</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BENEFÍCIOS ═══════════ -->
+  <section id="beneficios">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Resultados</p>
+        <h2 class="display-lg">O que você ganha <span class="gradient-text">de volta</span></h2>
+      </div>
+      <div class="beneficios-grid">
+        <div class="beneficio-item reveal">
+          <div class="beneficio-num gradient-text">3.2x</div>
+          <h4 style="font-weight:700;margin-bottom:8px;">Mais produtividade</h4>
+          <p class="beneficio-desc">Times que adotam IA com metodologia produzem 3x mais com a mesma estrutura de pessoas.</p>
+        </div>
+        <div class="beneficio-item reveal reveal-delay-1">
+          <div class="beneficio-num gradient-text">-68%</div>
+          <h4 style="font-weight:700;margin-bottom:8px;">Menos tempo em processos manuais</h4>
+          <p class="beneficio-desc">Automatizamos o que não precisa de humano para que seu time foque no que importa.</p>
+        </div>
+        <div class="beneficio-item reveal reveal-delay-2">
+          <div class="beneficio-num gradient-text">90d</div>
+          <h4 style="font-weight:700;margin-bottom:8px;">Resultado em 90 dias</h4>
+          <p class="beneficio-desc">Nada de pilotos eternos. Em 90 dias você tem sistema em produção com métricas reais.</p>
+        </div>
+        <div class="beneficio-item reveal reveal-delay-3">
+          <div class="beneficio-num gradient-text">-40%</div>
+          <h4 style="font-weight:700;margin-bottom:8px;">Redução de custos operacionais</h4>
+          <p class="beneficio-desc">IA bem implementada reduz custos com erros, retrabalho, suporte e processos redundantes.</p>
+        </div>
+        <div class="beneficio-item reveal">
+          <div class="beneficio-num gradient-text">100%</div>
+          <h4 style="font-weight:700;margin-bottom:8px;">Equipe autônoma</h4>
+          <p class="beneficio-desc">Ao final do projeto, seu time opera e evolui a IA de forma independente. Sem dependência.</p>
+        </div>
+        <div class="beneficio-item reveal reveal-delay-1">
+          <div class="beneficio-num gradient-text">↑∞</div>
+          <h4 style="font-weight:700;margin-bottom:8px;">Vantagem competitiva sustentável</h4>
+          <p class="beneficio-desc">IA é ativo estratégico que se compõe. Quanto antes você começa, maior a distância do concorrente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Perguntas Frequentes</p>
+        <h2 class="display-lg">Respostas diretas <span class="gradient-text">sem enrolação</span></h2>
+      </div>
+      <ul class="faq-list" role="list">
+
+        <li class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Qual o investimento mínimo para começar?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              O Diagnóstico Estratégico de IA começa em R$ 8.000 e pode ser aprovado pelo gestor sem necessidade de comitê. É o nosso produto de entrada e garante que o investimento seguinte seja certeiro. Pagar R$ 10k para saber onde investir R$ 200k é o melhor ROI possível.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal reveal-delay-1">
+          <button class="faq-question" aria-expanded="false">
+            Quanto tempo leva para ver resultado concreto?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Na Inteligência Operacional, o agente em produção é entregue em 30 dias. No Produto Inteligente, o resultado completo em 90 dias. Não trabalhamos com projetos abertos. Tudo tem prazo definido e entregáveis claros desde o kickoff.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal reveal-delay-2">
+          <button class="faq-question" aria-expanded="false">
+            Minha empresa não tem equipe técnica interna. Isso é um problema?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Não. Trabalhamos com e sem equipe técnica interna. Quando não há time interno, entregamos a solução completa e treinamos os usuários de negócio para operar. Quando há equipe, co-desenvolvemos e transferimos o conhecimento para que sejam autônomos.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Como vocês garantem o ROI do projeto?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Na fase de DESIGN definimos KPIs e critérios de sucesso mensuráveis com o cliente. Ao final do projeto apresentamos relatório comparativo entre o estado antes e depois. Na Inteligência Operacional, a garantia é formal: entrega do agente em produção com os KPIs acordados em 30 dias ou devolvemos o investimento.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal reveal-delay-1">
+          <button class="faq-question" aria-expanded="false">
+            Os dados da nossa empresa ficam seguros?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Segurança e privacidade são requisitos, não adicionais. Todos os projetos incluem NDA antes do início, análise de compliance de dados, opções de deployment local ou cloud privada, e arquitetura desenhada para não expor dados sensíveis a modelos públicos quando necessário.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal reveal-delay-2">
+          <button class="faq-question" aria-expanded="false">
+            Vocês são diferentes de uma empresa de TI ou de uma consultoria tradicional?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Sim, e essa diferença é exatamente onde estamos. Empresas de TI entregam código. Consultorias tradicionais entregam slides e recomendações. Nós entregamos sistemas funcionando em produção com ROI mensurável, combinando engenharia de ponta com execução estratégica e gestão de mudança.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Precisamos ter dados bem estruturados para começar?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Não precisa de dados perfeitos. O Assessment avalia exatamente o estado dos seus dados e prioriza iniciativas de IA que são viáveis com o que você tem. Em muitos casos, iniciamos com dados básicos e evoluímos a maturidade ao longo do projeto.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal reveal-delay-1">
+          <button class="faq-question" aria-expanded="false">
+            Qual o prazo típico para ver retorno sobre o investimento?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Na Inteligência Operacional (agente específico), o payback típico é de 3 a 6 meses após o go-live. No Produto Inteligente (transformação ampla), entre 6 e 18 meses dependendo do escopo. Documentamos o ROI esperado antes de fechar o projeto. Você só aprova se o número fechar.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal reveal-delay-2">
+          <button class="faq-question" aria-expanded="false">
+            Atendem empresas de qual tamanho?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Nosso ICP é empresas B2B com 50 a 500 colaboradores e faturamento a partir de R$ 10M/ano. Atendemos também empresas maiores que já tentaram IA e precisam de metodologia e execução. O critério mais importante não é o tamanho da empresa: é o comprometimento da liderança com a transformação.
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Como funciona a primeira conversa? Tem algum compromisso?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Nenhum compromisso. A primeira reunião é um diagnóstico gratuito de 45 minutos onde mapeamos seus desafios e avaliamos se podemos ajudar. Se não houver fit, indicamos quem pode ajudar melhor. Não trabalhamos com pressão de vendas.
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA FINAL ═══════════ -->
+  <section id="cta-final">
+    <div class="container">
+      <div class="cta-box">
+        <!-- Orbs decorativos -->
+        <div class="glow-orb glow-blue" style="width:300px;height:300px;top:-50px;right:10%;opacity:0.6;" aria-hidden="true"></div>
+        <div class="glow-orb glow-purple" style="width:250px;height:250px;bottom:-30px;left:10%;opacity:0.5;" aria-hidden="true"></div>
+        <div class="cta-content">
+          <div class="hero-badge" style="margin:0 auto 28px;" role="note">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Vagas limitadas · Próximos projetos: Q3 2026
+          </div>
+          <h2 class="display-lg cta-headline reveal">
+            A janela de vantagem<br />
+            <span class="gradient-text">está aberta agora.</span>
+          </h2>
+          <p class="body-lg cta-sub reveal reveal-delay-1">
+            Em 18 meses, as empresas que implementaram IA com estratégia hoje terão vantagens
+            difíceis de superar. A pergunta não é <em>se</em> você vai implementar IA —
+            é <em>quando</em>, e se vai ser antes ou depois do concorrente.
+          </p>
+          <div class="cta-actions reveal reveal-delay-2">
+            <a href="mailto:contato@somosnexusbr.com.br" class="btn btn-primary btn-lg">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h10c.6 0 1 .4 1 1v7c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V5c0-.6.4-1 1-1z"/><path d="M14 5l-5 4-5-4"/></svg>
+              Solicitar Diagnóstico Estratégico
+            </a>
+            <a href="mailto:contato@somosnexusbr.com.br?subject=Agendar%20Reunião" class="btn btn-ghost btn-lg">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="14" height="13" rx="2"/><path d="M12 1v4M6 1v4M2 7h14"/></svg>
+              Agendar Reunião
+            </a>
+          </div>
+          <div class="cta-trust reveal reveal-delay-3">
+            <div class="trust-item">
+              <div class="trust-icon" aria-hidden="true">✓</div>
+              <span>Primeira reunião gratuita</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon" aria-hidden="true">✓</div>
+              <span>Sem compromisso inicial</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon" aria-hidden="true">✓</div>
+              <span>NDA antes de qualquer conversa técnica</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon" aria-hidden="true">✓</div>
+              <span>Resposta em até 24h úteis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="nav-logo" style="font-size:1rem;">
+          <div class="nav-logo-icon" style="width:28px;height:28px;" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
+              <path d="M9 2L16 6V12L9 16L2 12V6L9 2Z" stroke="white" stroke-width="1.5" fill="none"/>
+              <path d="M9 6L12 8V12L9 14L6 12V8L9 6Z" fill="white" fill-opacity="0.5"/>
+            </svg>
+          </div>
+          SomosNexusBR
+        </div>
+        <p class="footer-copy">© 2026 SomosNexusBR. Todos os direitos reservados.</p>
+        <nav class="footer-links" aria-label="Links do rodapé">
+          <a href="mailto:contato@somosnexusbr.com.br">contato@somosnexusbr.com.br</a>
+          <a href="#faq">FAQ</a>
+          <a href="#cta-final">Contato</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════ JS ═══════════ -->
+  <script>
+    // NAV scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Hamburger (mobile)
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger?.addEventListener('click', () => {
+      const open = navLinks.style.display === 'flex';
+      navLinks.style.display = open ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '64px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = 'rgba(8,12,20,0.98)';
+      navLinks.style.padding = '24px';
+      navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+      navLinks.style.gap = '20px';
+      navLinks.style.zIndex = '99';
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Fecha todos
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = '0';
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+          // Fecha menu mobile
+          if (navLinks && window.innerWidth < 768) navLinks.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
