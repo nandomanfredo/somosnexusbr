@@ -631,9 +631,33 @@
       font-size: 1.5rem;
       font-weight: 800;
       margin-bottom: 20px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .socio-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
     .socio-card:nth-child(1) .socio-avatar { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
     .socio-card:nth-child(2) .socio-avatar { background: linear-gradient(135deg, var(--accent-3), #ec4899); color: #fff; }
+    /* Avatar foto grande — quando há foto real */
+    .socio-avatar-photo {
+      width: 100px; height: 100px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .socio-avatar-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
     .socio-role { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
     .socio-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
     .socio-bio { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
@@ -1971,7 +1995,9 @@
         </div>
 
         <div class="socio-card reveal reveal-delay-2">
-          <div class="socio-avatar" aria-hidden="true">FO</div>
+          <div class="socio-avatar-photo">
+            <img src="Fernando.jpg" alt="Fernando Oliveira">
+          </div>
           <p class="socio-role">Co-Fundador · Estratégia & Delivery</p>
           <h3 class="socio-name">Fernando Oliveira</h3>
           <p class="socio-bio">
