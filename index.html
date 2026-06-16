@@ -797,6 +797,248 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
     }
+
+    /* ─── CALCULADORA ROI ────────────────────────────────────── */
+    #calculadora { padding: 100px 0; }
+    .calc-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .calc-inputs-box, .calc-results-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+    }
+    .calc-results-box {
+      background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.06));
+      border-color: rgba(59,130,246,0.2);
+      position: sticky;
+      top: 90px;
+    }
+    .calc-field { margin-bottom: 22px; }
+    .calc-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .calc-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .calc-input-wrap:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .calc-prefix {
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.03);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .calc-input {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 12px 14px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      outline: none;
+      min-width: 0;
+    }
+    .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .calc-slider-wrap { padding: 4px 0 0; }
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border);
+      outline: none;
+      cursor: pointer;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+    .calc-slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    .calc-result-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .calc-result-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .calc-result-value.highlight { color: var(--accent); }
+    .calc-result-value.success { color: var(--success); }
+    .calc-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .calc-result-row:last-of-type { border-bottom: none; }
+    .calc-result-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .calc-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .calc-cta-btn:hover { background: #2563eb; transform: translateY(-1px); }
+    .calc-disclaimer {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .calc-wrap { grid-template-columns: 1fr; }
+      .calc-results-box { position: static; }
+    }
+
+    /* ─── JORNADA 3 PASSOS ───────────────────────────────────── */
+    #jornada { padding: 80px 0; background: linear-gradient(180deg, transparent, rgba(59,130,246,0.03), transparent); }
+    .jornada-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      position: relative;
+      margin-top: 56px;
+    }
+    .jornada-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(16.67% + 20px);
+      right: calc(16.67% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent) 0%, rgba(139,92,246,0.6) 50%, var(--accent-2) 100%);
+    }
+    .jornada-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+    }
+    .jornada-num {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .jornada-num.s1 { background: linear-gradient(135deg, #1d4ed8, var(--accent)); color: #fff; }
+    .jornada-num.s2 { background: linear-gradient(135deg, #5b21b6, var(--accent-3)); color: #fff; }
+    .jornada-num.s3 { background: linear-gradient(135deg, #0e7490, var(--accent-2)); color: #fff; }
+    .jornada-step-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .jornada-step-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 220px;
+    }
+    .jornada-step-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+    @media (max-width: 768px) {
+      .jornada-steps { grid-template-columns: 1fr; gap: 40px; }
+      .jornada-steps::before { display: none; }
+      .jornada-step { flex-direction: row; text-align: left; gap: 20px; align-items: flex-start; }
+      .jornada-num { flex-shrink: 0; }
+      .jornada-step-desc { max-width: none; }
+    }
+
+    /* ─── VALOR ÂNCORA NOS PRODUTOS ──────────────────────────── */
+    .produto-valor-ancora {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--success);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .produto-valor-ancora svg { flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -1074,7 +1316,13 @@
           </p>
           <div class="produto-footer">
             <span class="produto-prazo">10 dias úteis</span>
-            <span class="produto-price">R$ 8k – R$ 15k</span>
+            <div>
+              <span class="produto-price">R$ 8k – R$ 15k</span>
+              <p class="produto-valor-ancora">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+                Identifica tipicamente R$ 200k–R$ 2M em oportunidades
+              </p>
+            </div>
           </div>
         </article>
 
@@ -1092,7 +1340,13 @@
           </ul>
           <div class="produto-footer">
             <span class="produto-prazo">30 dias</span>
-            <span class="produto-price">R$ 35k – R$ 80k</span>
+            <div>
+              <span class="produto-price">R$ 35k – R$ 80k</span>
+              <p class="produto-valor-ancora">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+                Payback médio: 3 a 6 meses após o go-live
+              </p>
+            </div>
           </div>
         </article>
 
@@ -1111,7 +1365,13 @@
           </ul>
           <div class="produto-footer">
             <span class="produto-prazo">60–90 dias</span>
-            <span class="produto-price">R$ 80k – R$ 250k</span>
+            <div>
+              <span class="produto-price">R$ 80k – R$ 250k</span>
+              <p class="produto-valor-ancora">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+                ROI médio em projetos similares: 3x a 8x
+              </p>
+            </div>
           </div>
         </article>
 
@@ -1129,7 +1389,13 @@
           </ul>
           <div class="produto-footer">
             <span class="produto-prazo">Mínimo 12 meses</span>
-            <span class="produto-price">R$ 6k – R$ 20k/mês</span>
+            <div>
+              <span class="produto-price">R$ 6k – R$ 20k/mês</span>
+              <p class="produto-valor-ancora">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
+                Custo de 1 analista sênior. Capacidade de um time
+              </p>
+            </div>
           </div>
         </article>
 
@@ -1187,6 +1453,126 @@
           <h3 class="diferencial-title">Biblioteca de agentes prontos</h3>
           <p class="diferencial-desc">Aceleramos as entregas com soluções que já desenvolvemos e testamos em projetos reais: agentes prontos por setor, prompts refinados e playbooks validados. Você não paga pela nossa curva de aprendizado.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CALCULADORA ROI ═══════════ -->
+  <section id="calculadora">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Calculadora</p>
+        <h2 class="display-lg">Quanto custa <span class="gradient-text">não ter IA</span> hoje?</h2>
+        <p class="body-md section-sub">
+          Estime o custo atual de um processo manual e veja o impacto potencial de automatizá-lo com IA.
+        </p>
+      </div>
+      <div class="calc-wrap reveal reveal-delay-1">
+
+        <!-- INPUTS -->
+        <div class="calc-inputs-box">
+          <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;">Seu processo atual</p>
+
+          <div class="calc-field">
+            <label class="calc-label" for="calc-pessoas">Pessoas envolvidas nesse processo</label>
+            <div class="calc-input-wrap">
+              <span class="calc-prefix">nº</span>
+              <input class="calc-input" type="number" id="calc-pessoas" value="5" min="1" max="500" oninput="calcROI()">
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="calc-horas">Horas/semana gastas nesse processo (por pessoa)</label>
+            <div class="calc-input-wrap">
+              <span class="calc-prefix">h/sem</span>
+              <input class="calc-input" type="number" id="calc-horas" value="10" min="1" max="60" oninput="calcROI()">
+            </div>
+            <div class="calc-slider-wrap">
+              <input class="calc-slider" type="range" id="slider-horas" min="1" max="60" value="10" oninput="document.getElementById('calc-horas').value=this.value;calcROI()">
+              <div class="calc-slider-labels"><span>1h</span><span>60h</span></div>
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="calc-custo">Custo médio por hora (salário + encargos)</label>
+            <div class="calc-input-wrap">
+              <span class="calc-prefix">R$/h</span>
+              <input class="calc-input" type="number" id="calc-custo" value="80" min="20" max="500" oninput="calcROI()">
+            </div>
+            <div class="calc-slider-wrap">
+              <input class="calc-slider" type="range" id="slider-custo" min="20" max="500" value="80" oninput="document.getElementById('calc-custo').value=this.value;calcROI()">
+              <div class="calc-slider-labels"><span>R$ 20</span><span>R$ 500</span></div>
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label" for="calc-erros">Retrabalho e erros por mês (em R$)</label>
+            <div class="calc-input-wrap">
+              <span class="calc-prefix">R$</span>
+              <input class="calc-input" type="number" id="calc-erros" value="5000" min="0" max="500000" step="500" oninput="calcROI()">
+            </div>
+          </div>
+
+          <div class="calc-field" style="margin-bottom:0;">
+            <label class="calc-label" for="calc-reducao">Redução estimada com IA</label>
+            <div class="calc-slider-wrap" style="padding-top:8px;">
+              <input class="calc-slider" type="range" id="calc-reducao" min="30" max="90" value="60" oninput="calcROI()">
+              <div class="calc-slider-labels">
+                <span>30% (conservador)</span>
+                <span id="lbl-reducao" style="color:var(--accent);font-weight:700;">60%</span>
+                <span>90% (otimista)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="calc-results-box">
+          <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Resultado da estimativa</p>
+
+          <div class="calc-result-row">
+            <div>
+              <div class="calc-result-title">Custo mensal atual</div>
+              <div class="calc-result-value" id="res-mensal">R$ 0</div>
+              <div class="calc-result-sub">mão de obra + retrabalho</div>
+            </div>
+          </div>
+
+          <div class="calc-result-row">
+            <div>
+              <div class="calc-result-title">Custo anual perdido</div>
+              <div class="calc-result-value highlight" id="res-anual">R$ 0</div>
+              <div class="calc-result-sub">custo de oportunidade sem IA</div>
+            </div>
+          </div>
+
+          <div class="calc-result-row">
+            <div>
+              <div class="calc-result-title">Economia potencial/mês com IA</div>
+              <div class="calc-result-value success" id="res-economia">R$ 0</div>
+              <div class="calc-result-sub" id="res-economia-sub">com <span id="res-pct">60%</span> de automação</div>
+            </div>
+          </div>
+
+          <div class="calc-result-row">
+            <div>
+              <div class="calc-result-title">Payback estimado (Inteligência Operacional)</div>
+              <div class="calc-result-value" id="res-payback" style="font-size:1.5rem;">–</div>
+              <div class="calc-result-sub">investimento de referência: R$ 50k</div>
+            </div>
+          </div>
+
+          <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.5;padding:16px 0 0;border-top:1px solid var(--border);margin-top:8px;">
+            Esta calculadora é uma estimativa de referência. No Diagnóstico Estratégico mapeamos o ROI real do <em>seu</em> processo específico.
+          </p>
+
+          <a href="mailto:contato@somosnexusbr.com.br?subject=Quero%20meu%20Diagnóstico%20Estratégico" class="calc-cta-btn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2h12l-1.5 9H3.5L2 2z"/><path d="M5.5 13a1 1 0 102 0 1 1 0 00-2 0zM10.5 13a1 1 0 102 0 1 1 0 00-2 0z"/></svg>
+            Solicitar Diagnóstico Gratuito
+          </a>
+          <p class="calc-disclaimer">Diagnóstico inicial gratuito · 45 minutos · Sem compromisso</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1530,6 +1916,43 @@
     </div>
   </section>
 
+  <!-- ═══════════ JORNADA DO CLIENTE ═══════════ -->
+  <section id="jornada">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Como funciona</p>
+        <h2 class="display-lg">Do primeiro contato ao <span class="gradient-text">resultado em produção</span></h2>
+        <p class="body-md section-sub">Três etapas simples. Sem surpresas, sem burocracia.</p>
+      </div>
+      <div class="jornada-steps">
+        <div class="jornada-step reveal">
+          <div class="jornada-num s1">1</div>
+          <div>
+            <div class="jornada-step-title">Diagnóstico gratuito</div>
+            <p class="jornada-step-desc">Reunião de 45 min onde mapeamos seus desafios, identificamos as maiores oportunidades e avaliamos o fit. Sem compromisso.</p>
+            <span class="jornada-step-tag">Grátis · 45 minutos</span>
+          </div>
+        </div>
+        <div class="jornada-step reveal reveal-delay-1">
+          <div class="jornada-num s2">2</div>
+          <div>
+            <div class="jornada-step-title">Proposta com ROI calculado</div>
+            <p class="jornada-step-desc">Em até 48h você recebe uma proposta com escopo fechado, prazo definido e o ROI esperado com os dados do seu negócio. Você decide com números.</p>
+            <span class="jornada-step-tag">Em até 48h úteis</span>
+          </div>
+        </div>
+        <div class="jornada-step reveal reveal-delay-2">
+          <div class="jornada-num s3">3</div>
+          <div>
+            <div class="jornada-step-title">Projeto em execução</div>
+            <p class="jornada-step-desc">Começamos com o produto certo para o seu momento. Entregamos IA em produção com KPIs acordados. Você acompanha cada etapa.</p>
+            <span class="jornada-step-tag">Resultado em até 90 dias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════ CTA FINAL ═══════════ -->
   <section id="cta-final">
     <div class="container">
@@ -1540,7 +1963,7 @@
         <div class="cta-content">
           <div class="hero-badge" style="margin:0 auto 28px;" role="note">
             <span class="hero-badge-dot" aria-hidden="true"></span>
-            Vagas limitadas · Próximos projetos: Q3 2026
+            Diagnóstico gratuito · Resposta em até 24h
           </div>
           <h2 class="display-lg cta-headline reveal">
             A janela de vantagem<br />
@@ -1679,6 +2102,45 @@
         }
       });
     });
+  </script>
+
+  <script>
+    /* ── Calculadora ROI ── */
+    function fmt(n) {
+      if (n >= 1e6) return 'R$ ' + (n / 1e6).toFixed(1).replace('.', ',') + 'M';
+      if (n >= 1e3) return 'R$ ' + Math.round(n / 1e3) + 'k';
+      return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
+    }
+    function calcROI() {
+      const pessoas   = parseFloat(document.getElementById('calc-pessoas').value) || 0;
+      const horas     = parseFloat(document.getElementById('calc-horas').value)   || 0;
+      const custoh    = parseFloat(document.getElementById('calc-custo').value)    || 0;
+      const erros     = parseFloat(document.getElementById('calc-erros').value)    || 0;
+      const pct       = parseFloat(document.getElementById('calc-reducao').value)  || 60;
+
+      /* sync sliders */
+      document.getElementById('slider-horas').value  = horas;
+      document.getElementById('slider-custo').value  = custoh;
+      document.getElementById('lbl-reducao').textContent = pct + '%';
+      document.getElementById('res-pct').textContent     = pct + '%';
+
+      const custoMensal = pessoas * horas * 4.33 * custoh + erros;
+      const custoAnual  = custoMensal * 12;
+      const economia    = custoMensal * (pct / 100);
+      const ref         = 50000;
+      const paybackMeses = economia > 0 ? ref / economia : null;
+
+      document.getElementById('res-mensal').textContent  = fmt(custoMensal);
+      document.getElementById('res-anual').textContent   = fmt(custoAnual);
+      document.getElementById('res-economia').textContent = fmt(economia);
+      if (paybackMeses !== null && paybackMeses < 60) {
+        const m = Math.ceil(paybackMeses);
+        document.getElementById('res-payback').textContent = m <= 1 ? '< 1 mês' : m + ' meses';
+      } else {
+        document.getElementById('res-payback').textContent = '–';
+      }
+    }
+    calcROI();
   </script>
 
 </body>
