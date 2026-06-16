@@ -798,6 +798,153 @@
       .reveal { opacity: 1; transform: none; }
     }
 
+    /* ─── CASES ─────────────────────────────────────────────── */
+    #cases { padding: 100px 0; }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .case-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .case-card.c-rithmy::before { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+    .case-card.c-quaza::before  { background: linear-gradient(90deg, #8b5cf6, #3b82f6); }
+    .case-card:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: var(--shadow-glow); }
+    .case-company-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .case-logo {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .case-logo.rithmy { background: linear-gradient(135deg, #0ea5e9, #06b6d4); color: #fff; }
+    .case-logo.quaza  { background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; }
+    .case-company-info { flex: 1; min-width: 0; }
+    .case-company-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .case-sector {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .case-prazo {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 20px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+    .case-metric {
+      background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.06));
+      border: 1px solid rgba(16,185,129,0.15);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .case-metric-value {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--success);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .case-metric-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .case-what {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .case-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .case-quote {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-top: auto;
+    }
+    .case-quote-text {
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .case-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .case-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .case-avatar.rithmy { background: linear-gradient(135deg, #0ea5e9, #06b6d4); color: #fff; }
+    .case-avatar.quaza  { background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; }
+    .case-author-info { font-size: 0.8rem; }
+    .case-author-name { font-weight: 700; color: var(--text-primary); }
+    .case-author-role { color: var(--text-muted); }
+    @media (max-width: 768px) {
+      .cases-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── CALCULADORA ROI ────────────────────────────────────── */
     #calculadora { padding: 100px 0; }
     .calc-wrap {
@@ -1395,6 +1542,83 @@
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6l3 3 5-5"/></svg>
                 Custo de 1 analista sênior. Capacidade de um time
               </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CASES ═══════════ -->
+  <section id="cases">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label label-sm" style="justify-content:center;">Resultados reais</p>
+        <h2 class="display-lg">Clientes que já <span class="gradient-text">transformaram com IA</span></h2>
+        <p class="body-md section-sub">Projetos entregues, resultados mensuráveis, pessoas reais.</p>
+      </div>
+
+      <div class="cases-grid">
+
+        <!-- Rithmy -->
+        <article class="case-card c-rithmy reveal">
+          <div class="case-company-row">
+            <div class="case-logo rithmy" aria-hidden="true">Ri</div>
+            <div class="case-company-info">
+              <div class="case-company-name">Rithmy</div>
+              <div class="case-sector">Tecnologia · App de Treino e Fitness</div>
+            </div>
+            <span class="case-prazo">30 dias</span>
+          </div>
+
+          <div class="case-metric">
+            <div class="case-metric-value">+100%</div>
+            <div class="case-metric-label">de adesão pelos usuários após a implementação de IA no app</div>
+          </div>
+
+          <p class="case-what">O que foi feito</p>
+          <p class="case-desc">Desenvolvimento do aplicativo com inteligência artificial embarcada, tornando a experiência de treino mais personalizada e aumentando drasticamente o engajamento e a retenção dos usuários.</p>
+
+          <div class="case-quote">
+            <p class="case-quote-text">"A IA transformou a forma como os usuários interagem com o app. Dobramos a adesão em apenas 30 dias de entrega."</p>
+            <div class="case-author">
+              <div class="case-avatar rithmy" aria-hidden="true">FQ</div>
+              <div class="case-author-info">
+                <div class="case-author-name">Fabio Quirino</div>
+                <div class="case-author-role">CTO · Rithmy</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Quaza Tecnologia -->
+        <article class="case-card c-quaza reveal reveal-delay-1">
+          <div class="case-company-row">
+            <div class="case-logo quaza" aria-hidden="true">Qz</div>
+            <div class="case-company-info">
+              <div class="case-company-name">Quaza Tecnologia</div>
+              <div class="case-sector">Tecnologia · ERP para Provedores de Internet</div>
+            </div>
+            <span class="case-prazo">60 dias</span>
+          </div>
+
+          <div class="case-metric">
+            <div class="case-metric-value" style="font-size:1.5rem;line-height:1.2;">Deploy<br>estruturado</div>
+            <div class="case-metric-label">Redução no tempo de implantação, organização das áreas e versionamento consistente em produção</div>
+          </div>
+
+          <p class="case-what">O que foi feito</p>
+          <p class="case-desc">Diagnóstico completo dos processos de suporte, implantação e desenvolvimento. Reestruturação das áreas, redução do tempo de implantação de clientes e adoção de deploy com versionamento consistente — eliminando retrabalho e incidentes em produção.</p>
+
+          <div class="case-quote">
+            <p class="case-quote-text">"Finalmente temos clareza sobre nossos processos. A organização das áreas e o novo fluxo de deploy mudaram a maturidade operacional da empresa."</p>
+            <div class="case-author">
+              <div class="case-avatar quaza" aria-hidden="true">PW</div>
+              <div class="case-author-info">
+                <div class="case-author-name">Pedro Wessel</div>
+                <div class="case-author-role">CEO · Quaza Tecnologia</div>
+              </div>
             </div>
           </div>
         </article>
