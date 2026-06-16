@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 72" width="220" height="72">
+  <defs>
+    <!-- Orange gradient (top blob) -->
+    <radialGradient id="g-orange" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="55%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </radialGradient>
+    <!-- Purple gradient (middle dot) -->
+    <radialGradient id="g-purple" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </radialGradient>
+    <!-- Blue gradient (bottom dots) -->
+    <radialGradient id="g-blue" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </radialGradient>
+    <!-- Connector gradient orange→purple -->
+    <linearGradient id="g-conn1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <!-- Connector gradient purple→blue -->
+    <linearGradient id="g-conn2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── SYMBOL ── -->
+  <!-- Connector: orange blob → purple dot (thick S-curve) -->
+  <path d="M 33 17 C 28 24, 20 26, 18 33"
+        stroke="url(#g-conn1)" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <!-- Connector: purple dot → blue dots -->
+  <path d="M 18 37 C 18 44, 24 50, 30 54"
+        stroke="url(#g-conn2)" stroke-width="5.5" stroke-linecap="round" fill="none" opacity="0.85"/>
+
+  <!-- Orange blob (top) -->
+  <circle cx="36" cy="14" r="13" fill="url(#g-orange)"/>
+
+  <!-- Purple dot (middle-left) -->
+  <circle cx="15" cy="35" r="7.5" fill="url(#g-purple)"/>
+
+  <!-- Blue dot large (bottom-left) -->
+  <circle cx="27" cy="57" r="7" fill="url(#g-blue)"/>
+  <!-- Blue dot small (bottom-right) -->
+  <circle cx="42" cy="52" r="5" fill="url(#g-blue)"/>
+
+  <!-- ── WORDMARK ── -->
+  <text
+    x="64" y="48"
+    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-size="30"
+    font-weight="700"
+    letter-spacing="-0.5"
+    fill="#ffffff">rithmy</text>
+</svg>
